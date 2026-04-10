@@ -31,7 +31,7 @@
             },
             {
               "name": "Authorization",
-              "value": "Bearer YOUR_OPENAI_API_KEY"
+              "value": "Bearer KEY"
             }
           ]
         },
