@@ -1,0 +1,97 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ka\\Desktop\\ITI\\Vibe-Coding\\Labs\\Lab4\\Generator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{85462DD1-4E74-4C36-8CDC-7494EAB9C8FE}|Generator\\Generator.csproj|c:\\users\\ka\\desktop\\iti\\vibe-coding\\labs\\lab4\\generator\\generator\\models\\airesponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85462DD1-4E74-4C36-8CDC-7494EAB9C8FE}|Generator\\Generator.csproj|solutionrelative:generator\\models\\airesponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85462DD1-4E74-4C36-8CDC-7494EAB9C8FE}|Generator\\Generator.csproj|c:\\users\\ka\\desktop\\iti\\vibe-coding\\labs\\lab4\\generator\\generator\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85462DD1-4E74-4C36-8CDC-7494EAB9C8FE}|Generator\\Generator.csproj|solutionrelative:generator\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85462DD1-4E74-4C36-8CDC-7494EAB9C8FE}|Generator\\Generator.csproj|c:\\users\\ka\\desktop\\iti\\vibe-coding\\labs\\lab4\\generator\\generator\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{85462DD1-4E74-4C36-8CDC-7494EAB9C8FE}|Generator\\Generator.csproj|solutionrelative:generator\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ka\\Desktop\\ITI\\Vibe-Coding\\Labs\\Lab4\\Generator\\Generator\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Generator\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ka\\Desktop\\ITI\\Vibe-Coding\\Labs\\Lab4\\Generator\\Generator\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Generator\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-07T12:19:10.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ka\\Desktop\\ITI\\Vibe-Coding\\Labs\\Lab4\\Generator\\Generator\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Generator\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ka\\Desktop\\ITI\\Vibe-Coding\\Labs\\Lab4\\Generator\\Generator\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Generator\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAIBZwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T12:18:59.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\ka\\Desktop\\ITI\\Vibe-Coding\\Labs\\Lab4\\Generator\\Generator\\Models\\AiResponse.cs",
+              "RelativeDocumentMoniker": "Generator\\Models\\AiResponse.cs",
+              "ToolTip": "C:\\Users\\ka\\Desktop\\ITI\\Vibe-Coding\\Labs\\Lab4\\Generator\\Generator\\Models\\AiResponse.cs",
+              "RelativeToolTip": "Generator\\Models\\AiResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T12:18:44.09Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

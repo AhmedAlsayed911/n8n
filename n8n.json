@@ -1,0 +1,138 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ai-endpoint",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d33c4b54-653c-448b-a51d-6ff94aee7f63",
+      "name": "Webhook",
+      "webhookId": "1d3a0ef0-c5ce-4dd1-a56c-13a6f36e56e5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Content-Type",
+              "value": "Application/Json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_OPENAI_API_KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"gpt-4o-mini\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"={{$json.body.prompt}}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8465f938-ba3d-43d8-9897-e2bd1d4715dc",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseKey": "={   \"result\": \"={{$node['HTTP Request'].json['choices'][0]['message']['content']}}\",   \"status\": \"Email sent successfully\" }"
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        480,
+        96
+      ],
+      "id": "7ddf8003-1bd6-4639-9af2-19a89522df1d",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "sendTo": "ahmad.sayed.salem11@gmail.com",
+        "subject": "AI Response",
+        "message": "={{$json[\"choices\"][0][\"message\"][\"content\"]}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        -80
+      ],
+      "id": "7ed8b585-0a8c-489d-ab18-11323e2ee661",
+      "name": "Send a message",
+      "webhookId": "121f5550-99ea-4c66-9f02-6fe6fbacd82e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "cGCW9gr9kIXbKiLJ",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "254b2dfe-986b-41f8-8dfb-9d8d4f0a122f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "504a6dcef9cee33c26621ea6ca7352f945a258ab910babb9d0de1b761899ab6c"
+  },
+  "id": "q3p6D73FQd35wS26",
+  "tags": []
+}

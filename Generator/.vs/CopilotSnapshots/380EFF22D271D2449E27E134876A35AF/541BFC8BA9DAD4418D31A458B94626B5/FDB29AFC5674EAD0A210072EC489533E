@@ -1,0 +1,57 @@
+﻿@model AskAiViewModel
+
+@{
+    ViewData["Title"] = "Ask AI";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="mb-4">Ask AI</h1>
+
+        <form asp-action="AskAI" asp-controller="Home" method="post" id="askAiForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+            <div class="mb-3">
+                <label asp-for="Prompt" class="form-label">Your prompt</label>
+                <input asp-for="Prompt" class="form-control" placeholder="Type your question..." />
+                <span asp-validation-for="Prompt" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submitButton">
+                <span id="submitText">Ask AI</span>
+                <span id="loadingText" class="d-none">Loading...</span>
+            </button>
+        </form>
+
+        @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger mt-4">@Model.ErrorMessage</div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.AiResponse))
+        {
+            <div class="card mt-4">
+                <div class="card-header">AI Response</div>
+                <div class="card-body">
+                    <p class="mb-0">@Model.AiResponse</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const form = document.getElementById('askAiForm');
+        const submitButton = document.getElementById('submitButton');
+        const submitText = document.getElementById('submitText');
+        const loadingText = document.getElementById('loadingText');
+
+        form.addEventListener('submit', function () {
+            submitButton.disabled = true;
+            submitText.classList.add('d-none');
+            loadingText.classList.remove('d-none');
+        });
+    </script>
+}

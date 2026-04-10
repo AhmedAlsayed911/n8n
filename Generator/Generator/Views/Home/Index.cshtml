@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "AI Assistant";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="card border-0 shadow rounded-4">
+                <div class="card-body p-4 p-md-5">
+                    <h1 class="h3 mb-4 text-center">AI Assistant</h1>
+
+                    <form id="askAiForm">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label for="prompt" class="form-label">Your prompt</label>
+                            <textarea id="prompt" name="prompt" class="form-control rounded-3" rows="5" placeholder="Ask anything..."></textarea>
+                            <div id="promptValidation" class="text-danger small mt-2 d-none">Prompt is required.</div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-3" id="submitButton">
+                                <span id="submitText">Ask AI</span>
+                                <span id="loadingText" class="d-none">
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                    Loading...
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="statusSection" class="alert alert-success mt-4 d-none" role="alert"></div>
+                    <div id="errorSection" class="alert alert-danger mt-4 d-none" role="alert"></div>
+
+                    <div id="responseSection" class="card border-0 bg-light mt-4 shadow-sm rounded-4 d-none fade">
+                        <div class="card-body">
+                            <h2 class="h6 text-muted mb-2">AI Response</h2>
+                            <p id="responseText" class="mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const form = document.getElementById('askAiForm');
+        const promptInput = document.getElementById('prompt');
+        const promptValidation = document.getElementById('promptValidation');
+        const submitButton = document.getElementById('submitButton');
+        const submitText = document.getElementById('submitText');
+        const loadingText = document.getElementById('loadingText');
+        const responseSection = document.getElementById('responseSection');
+        const responseText = document.getElementById('responseText');
+        const statusSection = document.getElementById('statusSection');
+        const errorSection = document.getElementById('errorSection');
+
+        function setLoading(isLoading) {
+            submitButton.disabled = isLoading;
+            submitText.classList.toggle('d-none', isLoading);
+            loadingText.classList.toggle('d-none', !isLoading);
+        }
+
+        function resetSections() {
+            promptValidation.classList.add('d-none');
+            statusSection.classList.add('d-none');
+            errorSection.classList.add('d-none');
+            responseSection.classList.add('d-none');
+            responseSection.classList.remove('show');
+            responseText.textContent = '';
+        }
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            resetSections();
+
+            const prompt = promptInput.value.trim();
+            if (!prompt) {
+                promptValidation.classList.remove('d-none');
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                const token = form.querySelector('input[name="__RequestVerificationToken"]').value;
+                const body = new URLSearchParams({ prompt });
+
+                const response = await fetch('/Home/AskAI', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                        'RequestVerificationToken': token
+                    },
+                    body
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    errorSection.textContent = 'Something went wrong';
+                    errorSection.classList.remove('d-none');
+                    return;
+                }
+
+                const result = data?.result?.trim() ? data.result : 'No response received';
+                responseText.textContent = result;
+                responseSection.classList.remove('d-none');
+                requestAnimationFrame(() => responseSection.classList.add('show'));
+
+                if (data?.status) {
+                    statusSection.textContent = data.status;
+                    statusSection.classList.remove('d-none');
+                }
+            } catch {
+                errorSection.textContent = 'Something went wrong';
+                errorSection.classList.remove('d-none');
+            } finally {
+                setLoading(false);
+            }
+        });
+    </script>
+}
